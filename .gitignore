@@ -1,0 +1,20 @@
+*.pdf
+
+# TeX
+*.aux
+*.bcf
+*.log
+*.out
+*.toc
+
+# Beamer
+*.nav
+*.snm
+
+# Bib
+*.bbl
+*.blg
+*.run.xml
+
+# Emacs
+.auctex-auto/*
