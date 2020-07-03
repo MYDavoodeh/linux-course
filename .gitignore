@@ -17,4 +17,4 @@
 *.run.xml
 
 # Emacs
-.auctex-auto/*
+**/.auctex-auto/*

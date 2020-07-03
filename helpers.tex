@@ -1,5 +1,6 @@
 \newcommand{\start}[1][نقشه راه]{
-    \begin{frame}\maketitle\end{frame}
+    \frame{\maketitle}
     \begin{frame}{#1}\tableofcontents\end{frame}
 }
-\newcommand{\refs}{\begin{frame}{مراجع}\begin{LTR}\printbibliography[heading=none]\end{LTR}\end{frame}}
+
+\newcommand{\refs}{\section{مراجع}\begin{frame}\begin{LTR}\printbibliography[heading=none]\end{LTR}\end{frame}}
