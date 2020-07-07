@@ -1,0 +1,147 @@
+* introduction
+** definition of linux
+** definition of UNIX
+*** UNIX history
+** diff between UNIX and linux
+*** why not JUST UNIX?
+** free software foundation
+*** Richard stalman
+*** gpl
+*** GNU project
+*** POSIX
+** licensing
+*** what is software licensing
+*** GNU (General Public License)
+*** BDS
+*** GPLv3
+*** Free sofrware or open sourse software
+** distrobutions
+*** Debian
+*** Red Hat
+***  Arch
+*** Fedora
+*** which to choose?
+
+* why linux
+** what is OS
+** linux pros
+** linux cons
+** linux future
+**  package manager
+*** RPM
+*** apt
+*** pacman
+**  linux/GNU tools
+
+* Intalling (Debian)
+** what is Debian
+** dowanloding
+** GUI installer
+** commandline installer
+** Partitioning
+*** fdisk
+*** cfdisk
+** debian package manater
+** seting host name and NetworkManager config
+** install base packages
+
+* first steps
+** YELP
+*** man
+*** man man
+*** whereis, which, whatis
+*** mandb
+** local user managment
+**** whoami, who, W, id, SU, sudo, visudo
+*** user managment
+**** /etc/passwd
+**** useradd
+**** usermod
+**** creating home dir
+**** /etc/skel
+**** deleting home dir
+*** user password
+**** passwd
+**** shdow file
+**** chage
+**** disbling password
+*** user profile
+**** system profile
+**** .bash_profile
+**** .bash_login
+**** .profile
+**** .bashrc
+*** groups
+** directories
+*** pwd, ls, mkdir, cd, types of paths,
+*** best practice
+** files
+*** everything about files
+*** file, touch, rm, mv, cp, rename
+** file contents
+*** source
+*** bash
+*** tail, head, cat, tac, more & less, string
+*** best practices
+* more
+** file tree
+*** filesystem standard
+*** man hier
+*** /root, /boot, /bin, /etc, /opt, /mnt, /media, /tmp, /dev
+*** /dev/null
+*** /proc
+*** /urs
+*** /var
+
+** Pipes and commands
+*** basic Unix tools
+**** find, sleep, time, date, locate, gzip, bzip, cal
+*** I/O redirection
+**** stdin, stdout, stderr
+**** outpur redirection
+**** error redirection
+**** input redirection
+**** joining stdout & stderr
+*** filters
+**** cat, tee, grep, cut, tr, wc, sort, comm, od, sed, pip
+*** regex
+**** regex, cat...
+* file security
+** standard security
+*** ownerships
+*** permissions
+** advanced file permission
+*** sticky bit
+*** setgid bit
+** file links
+*** ls -{}
+*** definition of directory
+*** symbolic link
+*** hard link
+*** removing link
+* shell
+** commands
+** aliases
+** operators
+*** ; & $? && || # \
+** variables
+*** $ dollar sign, $PATH, $PS1, env, export, set, unset
+** shell history
+*** last command
+*** history
+*** !n
+*** $HISTSIZE
+** introduction to vi
+*** all about the vi, vim,nvim
+** shell scripting
+*** she-bang
+*** hello world
+*** variables
+*** sourcing and run a script
+*** loops and conditions
+*** advance scripting
+**** eval
+**** (())
+**** case
+**** function
+**** let
