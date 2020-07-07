@@ -8,6 +8,7 @@
   - [[#which-packages-do-i-need][Which packages do I need?]]
   - [[#debian][Debian]]
 - [[#first-steps][First steps]]
+  - [[#a-normal-day-with-libreoffice-and-gimp][A normal day with Libreoffice and GIMP]]
   - [[#getting-help][Getting help]]
   - [[#local-user-management][Local user management]]
   - [[#files][Files]]
@@ -128,6 +129,7 @@
 **** Setting host name
 *** Install base packages
 * First steps
+** A normal day with Libreoffice and GIMP
 ** Getting help
 *** ManDB
 **** ~man~
