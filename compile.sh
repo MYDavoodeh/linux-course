@@ -1,6 +1,9 @@
 #!/bin/sh
 # A short script for taking "production" exports from everything
 
+# If the value of mode is anything other than "withoutBiber" compilation will be signifcantly slower
+mode="${1:-withoutBiber}"
+
 slidesd="slides"
 
 ccmd(){ xelatex -shell-escape "$1"; }
@@ -18,7 +21,7 @@ done
 
 # Move PDFs to the target folder
 mkdir "$1" >/dev/null 2>&1
-mv *.pdf "$1"
+mv ./*.pdf "$1"
 
 # Remove auto-generated files
 find . -maxdepth 1 -type f\
@@ -39,15 +42,10 @@ find . -maxdepth 1 -type f\
     -exec rm -fv {} +)
 }
 
-# First compile it
-compileto pdfs/ withBiber
-
-# BEAMER ONLY:
-# Prepare to only compile notes
-sed -i '2i\\\\setbeameroption{show only notes}' "header.tex"
-
-# Compile notes without biber
-compileto notes/
-
-# Remove "notes-only" marker from slides headers
-sed -i '2d' header.tex
+[ "$mode" = "withoutBiber" ] && compileto pdfs/ || {
+    compileto pdfs/ withBiber
+    # BEAMER ONLY: Prepare to only compile notes
+    sed -i '2i\\\\setbeameroption{show only notes}' "header.tex" # makes Beamer to export "only notes"
+    compileto notes/
+    sed -i '2d' header.tex # removes "only notes" marker from slides headers
+}
