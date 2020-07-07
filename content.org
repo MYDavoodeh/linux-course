@@ -12,6 +12,7 @@
     - [[#pros][Pros]]
     - [[#cons][Cons]]
     - [[#features][Features]]
+    - [[#gnulinux-tool][GNU/Linux tool]]
     - [[#the-future][The future]]
     - [[#distributions][Distributions]]
     - [[#why-cli][Why CLI?]]
@@ -43,6 +44,10 @@
     - [[#tail-head-cat-tac-more--less-string][tail, head, cat, tac, more & less, string]]
     - [[#best-practices][Best practices]]
 - [[#more][More]]
+  - [[#setting-up-linux-server][setting up linux server]]
+    - [[#lamp-server][LAMP server]]
+    - [[#enginx-optional][Enginx *optional*]]
+  - [[#desktop-environments--windows-managers][Desktop environments & Windows managers]]
   - [[#file-system-hierarchy][File System Hierarchy]]
     - [[#man-hier][~man hier~]]
     - [[#file-system-standard][File system standard]]
@@ -123,12 +128,23 @@
 *** Pros
 *** Cons
 *** Features :vague:
+**** portable
+**** speed
+**** light weight
+**** Community
 **** package managers
 ***** RPM
 ***** Apttitude
 ***** Pacman
-**** GNU/Linux tools
-*** The future :vague:
+*** GNU/Linux tool :vague:
+**** tar, gcc, emacs
+*** The future
+**** open sourcing
+**** cload
+**** gaming
+***** steam os
+****** source game engine
+
 *** Distributions
 **** What's the difference?
 **** Debian
@@ -197,6 +213,13 @@
 *** tail, head, cat, tac, more & less, string
 *** Best practices
 * More
+** setting up linux server
+*** LAMP server
+**** Apache
+**** Mysql
+**** php
+*** Enginx *optional*
+** Desktop environments & Windows managers
 ** File System Hierarchy
 *** ~man hier~
 *** File system standard
@@ -257,6 +280,13 @@
 ** Introduction to VI
 ** Shell scripting
 *** POSIX
+**** diff between shells
+***** bash
+***** zsh
+***** csh
+***** ksh
+**** choosing your shell
+
 *** Shebang
 *** Hello world!
 *** Variables
