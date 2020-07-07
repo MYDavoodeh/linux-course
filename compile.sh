@@ -25,6 +25,8 @@ find . -maxdepth 1 -type f\
     ! -name '*.tex'\
     ! -name '*.sh'\
     ! -name '*.bib'\
+    ! -name '*.org'\
+    ! -name '*.md'\
     ! -name '.gitignore'\
     ! -name 'README'\
     ! -name 'LICENSE'\
