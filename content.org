@@ -1,75 +1,141 @@
-* Table of Content :TOC:
+* Table of Content :TOC_3:
 - [[#introduction][Introduction]]
-  - [[#linux][Linux]]
-  - [[#unix][UNIX]]
-  - [[#unix-vs-linux][UNIX vs. Linux]]
-  - [[#free-software-foundation][Free Software Foundation]]
-  - [[#licensing][Licensing]]
-  - [[#distributions][Distributions]]
-- [[#why-linux][Why Linux?]]
-  - [[#why-cli][Why CLI?]]
   - [[#what-is-an-os][What is an OS?]]
-  - [[#pros][Pros]]
-  - [[#cons][Cons]]
-  - [[#the-future][The future]]
-  - [[#package-managers][package managers]]
-  -  [[#gnulinux-tools][GNU/Linux tools]]
+  - [[#unix][UNIX]]
+    - [[#unix-history][UNIX history]]
+  - [[#free-as-in-freedom][Free, as in Freedom]]
+    - [[#licensing][Licensing]]
+    - [[#free-vs-out-of-charge-vs-open-source][Free vs out-of-charge vs open-source]]
+    - [[#free-software-foundation][Free Software Foundation]]
+  - [[#linux][Linux]]
+    - [[#unix-vs-linux][UNIX vs. Linux]]
+    - [[#pros][Pros]]
+    - [[#cons][Cons]]
+    - [[#features][Features]]
+    - [[#the-future][The future]]
+    - [[#distributions][Distributions]]
+    - [[#why-cli][Why CLI?]]
 - [[#installation][Installation]]
   - [[#debian][Debian]]
+    - [[#download][Download]]
+    - [[#gui-installer][GUI installer]]
+    - [[#cli-installer][CLI installer]]
+    - [[#partitioning][Partitioning]]
+    - [[#debian-package-manager][Debian package manager]]
+    - [[#configuring][Configuring]]
+    - [[#install-base-packages][Install base packages]]
 - [[#first-steps][First steps]]
   - [[#getting-help][Getting help]]
+    - [[#mandb][mandb]]
+    - [[#whereis-which-whatis][~whereis~, ~which~, ~whatis~]]
   - [[#local-user-management][Local user management]]
+    - [[#user-management][User management]]
+    - [[#password][Password]]
+    - [[#profiles-rcs-and-configs][Profiles, RCs and Configs]]
+    - [[#groups][Groups]]
   - [[#files][Files]]
+    - [[#everything-about-files][Everything about files]]
+    - [[#file-touch-rm-mv-cp-rename][~file~, ~touch~, ~rm~, ~mv~, ~cp~, ~rename~]]
+    - [[#directories][Directories]]
   - [[#managing-streams-and-files][Managing streams and files]]
+    - [[#source][source]]
+    - [[#bash][bash]]
+    - [[#tail-head-cat-tac-more--less-string][tail, head, cat, tac, more & less, string]]
+    - [[#best-practices][Best practices]]
 - [[#more][More]]
   - [[#file-system-hierarchy][File System Hierarchy]]
+    - [[#man-hier][~man hier~]]
+    - [[#file-system-standard][File system standard]]
+    - [[#root-boot-bin-etc-opt-mnt-media-tmp-dev][/root, /boot, /bin, /etc, /opt, /mnt, /media, /tmp, /dev]]
+    - [[#devnull][/dev/null]]
+    - [[#proc][/proc]]
+    - [[#urs][/urs]]
+    - [[#var][/var]]
   - [[#pipes-and-commands][Pipes and commands]]
+    - [[#basic-unix-tools][basic Unix tools]]
+    - [[#io-redirection][I/O redirection]]
+    - [[#filters][Filters]]
+    - [[#regex][Regex]]
 - [[#file-security][File security]]
   - [[#standard-security][Standard security]]
+    - [[#ownerships][Ownerships]]
+    - [[#permissions][Permissions]]
   - [[#advanced-file-permission][Advanced file permission]]
+    - [[#sticky-bit][Sticky bit]]
+    - [[#setgid-bit][Setgid bit]]
   - [[#links][Links]]
+    - [[#ls--][~ls -{}~]]
+    - [[#definition-of-directory][Definition of directory]]
+    - [[#symbolic-link][Symbolic link]]
+    - [[#hard-link][Hard link]]
+    - [[#removing-link][Removing link]]
 - [[#shell][Shell]]
   - [[#commands][Commands]]
   - [[#aliases][Aliases]]
   - [[#operators][Operators]]
+    - [[#][=;=]]
+    - [[#-1][=&=]]
+    - [[#-2][=$?=]]
+    - [[#-3][=&&=]]
+    - [[#-4][=||=]]
+    - [[#-5][=#=]]
+    - [[#-6][=\=]]
   - [[#variables][Variables]]
+    - [[#-7][=$=]]
+    - [[#path][~$PATH~]]
+    - [[#ps1][~$PS1~]]
+    - [[#env][~env~]]
+    - [[#export][~export~]]
+    - [[#set][~set~]]
+    - [[#unset][~unset~]]
   - [[#shell-history][Shell history]]
-  - [[#introduction-to-vi][Introduction to vi]]
+    - [[#the-last-command][The last command]]
+    - [[#history][History]]
+    - [[#n][=!n=]]
+    - [[#histsize][~$HISTSIZE~]]
+  - [[#introduction-to-vi][Introduction to VI]]
   - [[#shell-scripting][Shell scripting]]
+    - [[#posix][POSIX]]
+    - [[#shebang][Shebang]]
+    - [[#hello-world][Hello world!]]
+    - [[#variables-1][Variables]]
+    - [[#sourcing-and-run-a-script][Sourcing and run a script]]
+    - [[#loops-and-conditions][Loops and conditions]]
+    - [[#more-on-scripting][More on scripting]]
 
 * Introduction
-** Linux
+** What is an OS?
 ** UNIX
 *** UNIX history
-** UNIX vs. Linux
-*** Why not just UNIX?
-** Free Software Foundation
-*** GPL
-*** GNU project
-*** POSIX
-** Licensing
-*** What is software licensing?
-*** GNU (General Public License)
-**** GPLv3
-*** BDS
-*** Free vs open-sourse software
-** Distributions
-*** What's the difference?
-*** Debian
-*** Red Hat
-*** Arch
-*** Fedora
-* Why Linux?
-** Why CLI?
-** What is an OS?
-** Pros
-** Cons
-** The future
-** package managers
-*** RPM
-*** Apttitude
-*** Pacman
-**  GNU/Linux tools
+** Free, as in Freedom
+*** Licensing
+**** What is software licensing?
+**** GNU (General Public License)
+**** BSD
+**** Creative-Commons
+*** Free vs out-of-charge vs open-source
+*** Free Software Foundation
+**** GPL
+**** GNU project
+** Linux
+*** UNIX vs. Linux
+**** Why not just UNIX?
+*** Pros
+*** Cons
+*** Features :vague:
+**** package managers
+***** RPM
+***** Apttitude
+***** Pacman
+**** GNU/Linux tools
+*** The future :vague:
+*** Distributions
+**** What's the difference?
+**** Debian
+**** Red Hat
+**** Arch
+**** Fedora
+*** Why CLI?
 * Installation
 ** Debian
 *** Download
@@ -188,8 +254,9 @@
 *** History
 *** =!n=
 *** ~$HISTSIZE~
-** Introduction to vi
+** Introduction to VI
 ** Shell scripting
+*** POSIX
 *** Shebang
 *** Hello world!
 *** Variables
