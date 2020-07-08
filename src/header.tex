@@ -1,5 +1,7 @@
 \documentclass[professionalfonts]{beamer}
-% Theme ======================================
+% -----
+% BEGIN Theme
+% -----
 % Originally from https://kbroman.org/blog/2013/10/07/better-looking-latexbeamer-slides/
 \usetheme{default}
 \beamertemplatenavigationsymbolsempty % removes navigation buttons clashing with the defined slide numbers
@@ -34,7 +36,9 @@
  \setbeamertemplate{footline}{%
    \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
          \scriptsize\insertframenumber}}}\hspace*{5pt}}
-% Theme end ======================================
+% -----
+% END Theme
+% -----
 
 \usepackage{amsmath} % for more symbols and mafs
 \usepackage{hyperref} % for links
@@ -53,7 +57,9 @@
 \subtitle{هرآنچه لازم است بدانید}
 \date{\today}
 
-% Helpers ========================================
+% -----
+% BEGIN Helpers
+% -----
 \newcommand{\start}[1][نقشه راه]{
     \frame{\maketitle}
     \begin{frame}{#1}\tableofcontents\end{frame}
@@ -69,4 +75,6 @@
 }
 
 \newcommand{\subt}[1]{{\footnotesize\color{subtitle}{#1}}}
-% Helpers end ====================================
+% -----
+% END Helpers
+% -----
