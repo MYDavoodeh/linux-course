@@ -3,21 +3,20 @@
   - [[#what-is-an-os][What is an OS?]]
   - [[#unix][UNIX]]
   - [[#free-as-in-freedom][Free, as in Freedom]]
-  - [[#linux][Linux]]
 - [[#installation][Installation]]
   - [[#which-packages-do-i-need][Which packages do I need?]]
   - [[#debian][Debian]]
 - [[#first-steps][First steps]]
-  - [[#a-normal-day-with-libreoffice-and-gimp][A normal day with Libreoffice and GIMP]]
+  - [[#a-normal-day-with-libreoffice-and-gimp-in-plasma-live-de][A normal day with Libreoffice and GIMP in Plasma Live DE]]
   - [[#getting-help][Getting help]]
   - [[#local-user-management][Local user management]]
   - [[#files][Files]]
   - [[#managing-streams-and-files][Managing streams and files]]
 - [[#more][More]]
-  - [[#setting-up-linux-server][setting up linux server]]
   - [[#desktop-environments--windows-managers][Desktop environments & Windows managers]]
   - [[#file-system-hierarchy][File System Hierarchy]]
   - [[#pipes-and-commands][Pipes and commands]]
+  - [[#running-servers][Running servers]]
 - [[#file-security][File security]]
   - [[#standard-security][Standard security]]
   - [[#advanced-file-permission][Advanced file permission]]
@@ -47,15 +46,14 @@
 *** Free vs out-of-charge vs open-source
 *** Free Software Foundation
 **** GPL
-**** GNU project
-** Linux
+**** GNU project ** Linux
 *** UNIX vs. Linux
 **** Why not just UNIX?
 *** Pros and cons
 *** Features :vague:
-**** portable
-**** speed
-**** light weight
+**** Portable
+**** Speed
+**** Light weight
 **** Community
 **** package managers
 ***** Softwares in Linux
@@ -63,14 +61,12 @@
 ***** Apttitude
 ***** Pacman
 *** GNU/Linux tool :vague:
-**** tar, gcc, emacs
+**** Examples: ~tar~, ~gcc~, ~emacs~
 *** The future
-**** open sourcing
-**** cload
-**** gaming
-***** steam os
-****** source game engine
-
+**** Open-source
+**** Cloud and servers
+**** Gaming
+***** SteamOS
 *** Distributions
 **** What's the difference?
 **** Debian
@@ -129,7 +125,7 @@
 **** Setting host name
 *** Install base packages
 * First steps
-** A normal day with Libreoffice and GIMP
+** A normal day with Libreoffice and GIMP in Plasma Live DE
 ** Getting help
 *** ManDB
 **** ~man~
@@ -172,17 +168,11 @@
 **** Types of paths
 **** Best practices :vague:
 ** Managing streams and files
-*** source
-*** bash
-*** tail, head, cat, tac, more & less, string
+*** ~source~
+*** ~bash~
+*** ~tail~, ~head~, ~cat~, ~tac~, ~more~ & ~less~, string
 *** Best practices
 * More
-** setting up linux server
-*** LAMP server
-**** Apache
-**** Mysql
-**** php
-*** Enginx *optional*
 ** Desktop environments & Windows managers
 ** File System Hierarchy
 *** ~man hier~
@@ -204,9 +194,13 @@
 *** Filters
 **** ~cat~, ~tee~, ~grep~, ~cut~, ~tr~, ~wc~, ~sort~, ~comm~, ~od~, ~sed~, ~pip~
 *** Regex
+** Running servers
+*** SSH
+*** HTTP
+*** FTP
 * File security
 ** Standard security
-*** Ownerships
+*** Ownership
 *** Permissions
 ** Advanced file permission
 *** Sticky bit
@@ -225,8 +219,11 @@
 *** =&=
 *** =$?=
 *** =&&=
+*** =&=
 *** =||=
+*** =|=
 *** =#=
+*** =#!=
 *** =\=
 ** Variables
 *** =$=
@@ -244,14 +241,14 @@
 ** Introduction to VI
 ** Shell scripting
 *** POSIX
-**** diff between shells
-***** bash
-***** zsh
-***** csh
-***** ksh
-**** choosing your shell
-
-*** Shebang
+**** The difference between shells
+***** Bash
+***** Zsh
+***** Fish
+***** Csh
+***** Ksh
+***** Dash
+**** Changing shells
 *** Hello world!
 *** Variables
 *** Sourcing and run a script
