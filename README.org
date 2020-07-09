@@ -8,17 +8,17 @@ Above all, this repository is a playground for me to test out LaTeX and Beamer f
 I welcome contributions of any sort!
 
 ** Todo list
-- [ ] Write a help message for `compiler.sh`
-- [ ] *Important:* Fix the messed up header sections (LTR tree) of notes pdfs
-- [ ] Make a light theme
+- Write a help message for =compiler.sh=
+- *Important:* Fix the messed up header sections (LTR tree) of notes pdfs
+- Make a light theme
 
 ** Keeping it consistent
 
 - Everything other than the slides context must be in English. (Eventually, I will translate the slides.)
 - All the generic files are Org files.
-- Common properties and commands must be written in `src/header.tex`. (no other shared file with the current `compiler.sh`. If you aim to add more, modify the file as well.)
+- Common properties and commands must be written in =src/header.tex=. (no other shared file with the current =compiler.sh=. If you aim to add more, modify the file as well.)
 - In Preamble, the settings of each package should be directly below it.
-- Logical sections of the codes should follow the syntax below (example used in `src/header.tex`):
+- Logical sections of the codes should follow the syntax below (example used in =src/header.tex=):
   #+BEGIN_SRC
 -----
 BEGIN Section
