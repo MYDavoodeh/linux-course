@@ -43,6 +43,9 @@
 
 \usepackage{amsmath} % for more symbols and mafs
 \usepackage{hyperref} % for links
+\usepackage{caption}
+
+\graphicspath{{../images/}}
 
 \usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{../bib.bib}
@@ -68,7 +71,7 @@
 
 \newcommand{\refs}{
   \section{مراجع}
-  \begin{frame}
+  \begin{frame}{مراجع}
     \begin{LTR}
       \printbibliography[heading=none]
     \end{LTR}
