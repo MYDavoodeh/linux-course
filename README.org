@@ -7,6 +7,11 @@ Above all, this repository is a playground for me to test out LaTeX and Beamer f
 
 I welcome contributions of any sort!
 
+** Todo list
+- [ ] Write a help message for `compiler.sh`
+- [ ] *Important:* Fix the messed up header sections (LTR tree) of notes pdfs
+- [ ] Make a light theme
+
 ** Keeping it consistent
 
 - Everything other than the slides context must be in English. (Eventually, I will translate the slides.)
