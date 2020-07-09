@@ -84,7 +84,7 @@ while true; do
         -s | --slides-dir) checkin "$2" "$1" && slidesd="$2" && shift 2 ;;
         -y | --notesd-dir) checkin "$2" "$1" && notesd="$2" && shift 2 ;;
         -k | --keep) keep="keepAuxFiles" && shift ;;
-        -c | --clean) keep="removeAuxFiles" && shift ;;
+        -r | --clean) keep="removeAuxFiles" && shift ;;
         -q | --quite) debug="withoutDebug" && shift ;;
         -h | --help) echo "$helpmsg" && exit 0 ;;
         -*) echo "Invalid option: $1" && echo "$helpmsg" && exit 1 ;;
