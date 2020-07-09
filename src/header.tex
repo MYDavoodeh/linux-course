@@ -4,10 +4,21 @@
 % -----
 % Originally from https://kbroman.org/blog/2013/10/07/better-looking-latexbeamer-slides/
 \usetheme{default}
-\beamertemplatenavigationsymbolsempty % removes navigation buttons clashing with the defined slide numbers
-\hypersetup{pdfpagemode=UseNone} % hides bookmarks on initial view
 \usefonttheme{serif} % (Required for Persian)
+
+\hypersetup{pdfpagemode=UseNone} % hides bookmarks on initial view
+\beamertemplatenavigationsymbolsempty % removes navigation buttons clashing with the defined slide numbers
+
 \setbeamertemplate{sections/subsections in toc}[sections numbered] % replaces bullets in toc with numbers
+\setbeamertemplate{bibliography item}{\insertbiblabel} % Numbered bibliography
+\setbeamertemplate{itemize subitem}{{\textendash}} % changes bullets to \textendash
+% Make bullets/nums smaller
+\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
+% Slide number
+ \setbeamertemplate{footline}{%
+   \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
+         \scriptsize\insertframenumber}}}\hspace*{5pt}}
 
 \definecolor{foreground}{RGB}{255,255,255}
 \definecolor{background}{RGB}{24,24,24}
@@ -26,16 +37,6 @@
 \setbeamercolor{itemize/enumerate subbody}{fg=gray}
 \setbeamercolor{section in toc}{fg=foreground}
 \setbeamercolor{subsection in toc}{fg=gray}
-
-\setbeamertemplate{itemize subitem}{{\textendash}} % changes bullets to \textendash
-% Make bullets/nums smaller
-\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
-\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
-
-% Slide number
- \setbeamertemplate{footline}{%
-   \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
-         \scriptsize\insertframenumber}}}\hspace*{5pt}}
 % -----
 % END Theme
 % -----
