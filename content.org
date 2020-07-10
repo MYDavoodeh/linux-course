@@ -3,6 +3,7 @@
   - [[#what-is-an-os][What is an OS?]]
   - [[#unix][UNIX]]
   - [[#free-as-in-freedom][Free, as in Freedom]]
+  - [[#linux][Linux]]
 - [[#installation][Installation]]
   - [[#which-packages-do-i-need][Which packages do I need?]]
   - [[#debian][Debian]]
@@ -46,7 +47,8 @@
 *** Free vs out-of-charge vs open-source
 *** Free Software Foundation
 **** GPL
-**** GNU project ** Linux
+**** GNU project
+** Linux
 *** UNIX vs. Linux
 **** Why not just UNIX?
 *** Pros and cons
