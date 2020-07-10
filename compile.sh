@@ -8,7 +8,7 @@
 header="header.tex"
 log="compile.log"
 helpmsg="" # TODO Write a help message
-notesln="2"
+notesln="4"
 # Default values
 destd="build"
 slidesd="src"

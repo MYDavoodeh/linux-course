@@ -1,4 +1,7 @@
 \documentclass[professionalfonts]{beamer}
+% Add references to notes
+\makeatletter\defbeameroption{show only notes}[]{\beamer@notestrue\beamer@notesnormalsfalse}
+
 % -----
 % BEGIN Theme
 % -----
@@ -69,17 +72,22 @@
 % BEGIN Helpers
 % -----
 \newcommand{\start}[1][نقشه راه]{
-    \frame{\maketitle}
-    \begin{frame}{#1}\tableofcontents\end{frame}
+  \frame{\maketitle}
+  \begin{frame}{#1}\tableofcontents\end{frame}
+}
+
+\newcommand{\bib}{
+  \begin{LTR}
+    \printbibliography[heading=none]
+  \end{LTR}
 }
 
 \newcommand{\refs}{
   \section{مراجع}
   \begin{frame}{مراجع}
-    \begin{LTR}
-      \printbibliography[heading=none]
-    \end{LTR}
+    \bib
   \end{frame}
+  \note{\bib}
 }
 
 \newcommand{\subt}[1]{{\footnotesize\color{subtitle}{#1}}}
