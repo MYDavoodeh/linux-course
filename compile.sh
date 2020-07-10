@@ -19,6 +19,7 @@ cleanup(){ # Remove auto-generated files
         ! -name '*.org'\
         ! -name '*.md'\
         ! -name '.gitignore'\
+        ! -name '.editorconfig'\
         ! -name 'README'\
         ! -name 'LICENSE'\
         -exec rm -f {} +
