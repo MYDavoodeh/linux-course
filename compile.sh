@@ -4,6 +4,22 @@
 # -----
 # BEGIN Header code
 # -----
+# Config (not available via input)
+header="header.tex"
+log="compile.log"
+helpmsg="" # TODO Write a help message
+notesln="2"
+# Default values
+destd="build"
+slidesd="src"
+notesd="$destd/notes"
+debug="withoutDebug"
+biber="withoutBiber"
+notes="withoutNotes"
+keep="keepAuxFiles"
+filepattern="*"
+
+
 checkin(){ # Checks paramater and respond. $2 is the flag and $1 is value.
     # shellcheck disable=SC2015
     [ -n "$1" ] && return 0 || { [ -n "$2" ] && error "No parameter for $2" || error "Bad inputs! Seek help." ;}
@@ -51,25 +67,10 @@ compileto(){ # $1: Destination folder for pdf; $2(opt): file; $3(opt): withBiber
 }
 
 compilenotes(){ # BEAMER ONLY: Prepare to only compile notes
-    sed -i '2i\\\\setbeameroption{show only notes}' "$header" # makes Beamer to export "only notes"
+    sed -i "${notesln}i\\\\\\setbeameroption{show only notes}" "$header" # makes Beamer to export "only notes"
     compileto "$1" "$2" "$3"
-    sed -i '2d' "$header" # removes "only notes" marker from slides headers
+    sed -i "${notesln}d" "$header" # removes "only notes" marker from slides headers
 }
-
-
-# Config (not available via input)
-header="header.tex"
-log="compile.log"
-helpmsg="" # TODO Write a help message
-# Default values
-destd="build"
-slidesd="src"
-notesd="$destd/notes"
-debug="withoutDebug"
-biber="withoutBiber"
-notes="withoutNotes"
-keep="keepAuxFiles"
-filepattern="*"
 
 
 # Inputs and flag management
