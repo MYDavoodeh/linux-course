@@ -1,4 +1,4 @@
-\documentclass[professionalfonts]{beamer}
+\documentclass[8pt]{beamer}
 % Add references to notes
 \makeatletter\defbeameroption{show only notes}[]{\beamer@notestrue\beamer@notesnormalsfalse}
 
@@ -48,6 +48,10 @@
 
 \usepackage{amsmath} % for more symbols and mafs
 \usepackage{hyperref} % for links
+\usepackage{fancyvrb}
+\usepackage{array}
+\newcolumntype{M}{>{\centering\arraybackslash}m{2.2cm}}
+\newcolumntype{R}{>{\centering\arraybackslash}m{1.5cm}}
 
 \usepackage{caption}
 \captionsetup{justification=raggedleft} % right aligns multiline captions
