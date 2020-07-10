@@ -99,6 +99,7 @@ done
 
 
 cd "$slidesd" || exit 1
+rm $log
 [ "$notes" = "onlyNotes" ] || compileto "$destd/" "$filepattern" "$biber"
 [ "$notes" != "withoutNotes" ] && compilenotes "$notesd/" "$filepattern" "$biber"
 [ "$debug" = "withDebug" ] && cat $log
