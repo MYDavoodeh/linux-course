@@ -13,7 +13,7 @@ Compilation requires BibLatex, Biber, [[http://wiki.irmug.com/index.php?title=X_
 
 After meeting the requirements, you can run the =compile.sh= to get your outputs in the newly made =build/= folder:
   #+BEGIN_SRC
-./compile.sh --biber --notes --full-references
+./compile.sh --publish
   #+END_SRC
 or compile without the script and changing the source code manually.
 

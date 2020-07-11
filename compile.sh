@@ -67,6 +67,25 @@ compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if 
     [ -n "$4" ] && sed -i "${notesln}d" "$header" # removes "only notes" marker from slides headers
 }
 
+publish(){
+    mkdir -v build
+    dir="build/full$(git rev-parse --short=7 HEAD 2>&1 | grep -Pq '^([a-f]|\d){7}$' && echo "-$(git rev-parse --short=7 HEAD)")"
+    rm -rdfv $dir
+    mkdir -v $dir/
+    mkdir -v $dir/full-references
+    mkdir -v $dir/notes
+    mkdir -v $dir/original-references
+    mkdir -v $dir/second-screen
+    "$(basename -- "$0")" --notes --biber --full-references
+    mv -v build/*.pdf       $dir/full-references
+    mv -v build/notes/*.pdf $dir/notes
+    "$(basename -- "$0")" --biber --original-refs
+    mv -v build/*.pdf       $dir/original-references
+    "$(basename -- "$0")" --biber --full-references --second-screen
+    mv -v build/*.pdf       $dir/second-screen
+    echo "published in $dir"
+}
+
 
 # Inputs and flag management
 [ -n "$1" ] && { printf "%s" "$1" | grep -q "^-" || { filepattern="$1" && shift ;} ;} #If the first input wasn't a flag read it as the $file pattern
@@ -89,6 +108,7 @@ while true; do
         -q | --quite) debug="withoutDebug" && shift ;;
         -p | --purge) purged="${2:-.}" && shift ;;
         -h | --help) echo "$helpmsg" && exit 0 ;;
+        -a | --publish) publish ; exit 0 ;;
         -*) echo "Invalid option: $1" && echo "$helpmsg" && exit 1 ;;
         *)  break ;; # No more options
     esac
