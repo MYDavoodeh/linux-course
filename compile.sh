@@ -103,8 +103,9 @@ cd "$slidesd" || exit 1
 rm $log
 [ "$dont" = "true" ] || compileto "$destd/" "$filepattern" "$biber"
 [ "$notes" = "notes on second screen" ] && notesd="$destd"
-[ "$ref" = "withNotes" ] && { # Include note references in the final build
 [ -n "$notes" ] && compileto "$notesd/" "$filepattern" "$biber" "$notes"
+# When notes are on the second screen, note references are automatically included in References section
+[ "$ref" = "withNotes" ] && [ "$notes" != "notes on second screen" ] && { # Include note references in the final build
     # Compile and notes and save the bib file then use it to compile the main file
     { [ -n "$notes" ] && [ "$biber" = "withBiber" ] ;} || compileto "trash/" "$filepattern" "withBiber" "only notes"
     echo "made temporary note references files"
