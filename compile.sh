@@ -88,6 +88,7 @@ while true; do
         -k | --keep) keep="keepAuxFiles" && shift ;;
         -r | --clean) keep="removeAuxFiles" && shift ;;
         -q | --quite) debug="withoutDebug" && shift ;;
+        -p | --purge) purge="purgeHere" && shift ;;
         -h | --help) echo "$helpmsg" && exit 0 ;;
         -*) echo "Invalid option: $1" && echo "$helpmsg" && exit 1 ;;
         *)  break ;; # No more options
@@ -98,6 +99,7 @@ done
 # -----
 
 
+[ "$purge" = "purgeHere" ] && cleanup && exit 0
 cd "$slidesd" || exit 1
 rm $log
 [ "$notes" = "onlyNotes" ] || compileto "$destd/" "$filepattern" "$biber"
