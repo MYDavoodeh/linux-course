@@ -14,7 +14,7 @@ destd="build"
 slidesd="src"
 notesd="$destd/notes"
 debug="withoutDebug"
-biber="withoutBiber"
+biber="withBiber"
 # notes="only notes"
 keep="keepAuxFiles"
 ref="withNotes"
@@ -82,6 +82,7 @@ while true; do
         -f | --full-references) ref="withNotes" && dont="true" && shift ;;
         -d | --debug) debug="withDebug" && shift ;;
         -b | --biber) biber="withBiber" && shift ;;
+        -l | --disable-biber) biber="withoutBiber" && shift ;;
         -n | --notes) notes="only notes" && shift ;;
         -w | --second-screen) notes="notes on second screen" && dont="true" && shift ;;
         -o | --only-notes) notes="only notes" && dont="true" && shift ;;
