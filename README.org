@@ -9,13 +9,23 @@ I welcome contributions of any sort!
 
 Compilation requires BibLatex, Biber, [[http://wiki.irmug.com/index.php?title=X_Series_2][XB Roya Font]] and [[https://github.com/be5invis/Iosevka][Iosevka]].
 
-** Todo list
+* Compilation
+
+After meeting the requirements, you can run the =compile.sh= to get your outputs in the newly made =build/= folder:
+  #+BEGIN_SRC
+./compile.sh --biber --notes --full-references
+  #+END_SRC
+or compile without the script and changing the source code manually.
+
+If you cannot meet the requirements or have problems of any sort with compilation process, please refer to [[https://github.com/MYDavoodeh/linux-course/releases][Releases]] and find a pre-compiled PDF suiting your needs.
+
+* Todo list
 
 - Write a help message for =compiler.sh=
 - *Important:* Fix the messed up header sections (LTR tree) of notes pdfs
 - Make a light theme
 
-** Keeping it consistent
+* Keeping it consistent
 
 - Everything other than the slides context must be in English. (Eventually, I will translate the slides.)
 - All the generic files are Org files.
