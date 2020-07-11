@@ -78,6 +78,7 @@ while true; do
         -d | --debug) debug="withDebug" && shift ;;
         -b | --biber) biber="withBiber" && shift ;;
         -l | --disable-biber) biber="withoutBiber" && shift ;;
+        -z | --original-refs) ref="withoutNotes" && shift ;;
         -n | --notes) notes="only notes" && shift ;;
         -w | --second-screen) notes="notes on second screen" && dont="true" && shift ;;
         -o | --only-notes) notes="only notes" && dont="true" && shift ;;
