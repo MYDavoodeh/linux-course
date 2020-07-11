@@ -9,11 +9,13 @@
   - [[#debian][Debian]]
 - [[#first-steps][First steps]]
   - [[#a-normal-day-with-libreoffice-and-gimp-in-plasma-live-de][A normal day with Libreoffice and GIMP in Plasma Live DE]]
+  - [[#why-cli][Why CLI?]]
   - [[#getting-help][Getting help]]
   - [[#local-user-management][Local user management]]
   - [[#files][Files]]
   - [[#managing-streams-and-files][Managing streams and files]]
 - [[#more][More]]
+  - [[#gnulinux-tool][GNU/Linux tool]]
   - [[#desktop-environments--windows-managers][Desktop environments & Windows managers]]
   - [[#file-system-hierarchy][File System Hierarchy]]
   - [[#pipes-and-commands][Pipes and commands]]
@@ -62,20 +64,12 @@
 ***** RPM
 ***** Apttitude
 ***** Pacman
-*** GNU/Linux tool :vague:
-**** Examples: ~tar~, ~gcc~, ~emacs~
-*** The future
+*** The future :notincluded:
 **** Open-source
 **** Cloud and servers
 **** Gaming
 ***** SteamOS
-*** Distributions
-**** What's the difference?
-**** Debian
-**** Red Hat
-**** Arch
-**** Fedora
-*** Why CLI?
+*** Distributions: What's the difference?
 * Installation
 ** Which packages do I need?
 *** Essential
@@ -128,6 +122,7 @@
 *** Install base packages
 * First steps
 ** A normal day with Libreoffice and GIMP in Plasma Live DE
+** Why CLI?
 ** Getting help
 *** ManDB
 **** ~man~
@@ -175,6 +170,8 @@
 *** ~tail~, ~head~, ~cat~, ~tac~, ~more~ & ~less~, string
 *** Best practices
 * More
+** GNU/Linux tool
+*** Examples: ~tar~, ~gcc~, ~emacs~
 ** Desktop environments & Windows managers
 ** File System Hierarchy
 *** ~man hier~
