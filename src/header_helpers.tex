@@ -1,0 +1,24 @@
+\newcommand{\start}[1][نقشه راه]{
+  \frame{\maketitle}
+  \begin{frame}{#1}\tableofcontents\end{frame}
+}
+
+\newcommand{\bib}{
+  \begin{LTR}
+    \printbibliography[heading=none]
+  \end{LTR}
+}
+
+\newcommand{\refs}{
+  \section{مراجع}
+  \begin{frame}{مراجع}
+    \bib
+  \end{frame}
+  \note{\bib}
+}
+
+\newcommand{\subt}[1]{{\footnotesize\color{subtitle}{#1}}}
+
+\newcommand{\divider}[1]{\frame{\Huge{#1}}}
+
+\newcommand{\subdivider}[1]{\frame{\color{hilight}\huge{#1}}}

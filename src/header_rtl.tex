@@ -1,0 +1,61 @@
+\usefonttheme{serif} % (Required for Persian)
+
+\makeatletter
+% Originally from http://qa.parsilatex.com/14100
+% -----
+% BEGIN List fix
+% -----
+\expandafter\let\csname beamer@@tmpop@itemize item@default\endcsname\relax
+\expandafter\let\csname beamer@@tmpop@itemize subitem@default\endcsname\relax
+\expandafter\let\csname beamer@@tmpop@itemize subsubitem@default\endcsname\relax
+
+\defbeamertemplate*{itemize item}{default}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleleft$}}
+\defbeamertemplate*{itemize subitem}{default}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleleft$}}
+\defbeamertemplate*{itemize subsubitem}{default}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleleft$}}
+
+\patchcmd{\@listi}{\leftmargin}{\rightmargin}{}{}
+\let\@listI\@listi
+\patchcmd{\@listii}{\leftmargin}{\rightmargin}{}{}
+\patchcmd{\@listiii}{\leftmargin}{\rightmargin}{}{}
+\patchcmd{\beamer@enum@}{\raggedright}{\raggedleft}{}{}
+\patchcmd{\@@description}{\raggedright}{\raggedleft}{}{}
+\patchcmd{\@@description}{\leftmargin}{\rightmargin}{}{}
+
+\renewcommand{\itemize}[1][]{
+  \beamer@ifempty{#1}{}{\def\beamer@defaultospec{#1}}
+  \ifnum \@itemdepth >2\relax\@toodeep\else
+    \advance\@itemdepth\@ne
+    \beamer@computepref\@itemdepth% sets \beameritemnestingprefix
+    \usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
+    \usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
+    \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
+    \list{\usebeamertemplate{itemize \beameritemnestingprefix item}}{\def\makelabel##1{{
+      \hss\llap{{
+        \usebeamerfont*{itemize \beameritemnestingprefix item}
+        \usebeamercolor[fg]{itemize \beameritemnestingprefix item}##1}}
+      }}
+    }
+  \fi
+  \beamer@cramped
+  \raggedleft
+  \beamer@firstlineitemizeunskip
+}
+% -----
+% END List fix
+% -----
+% BEGIN TOC fix
+% -----
+\expandafter\let\csname beamer@@tmpop@subsection in toc@default\endcsname\relax
+\expandafter\let\csname beamer@@tmpop@subsubsection in toc@default\endcsname\relax
+\defbeamertemplate*{subsection in toc}{default}
+{\leavevmode\rightskip=1.5em\inserttocsubsection\par}
+
+\defbeamertemplate*{subsubsection in toc}{default}
+{\leavevmode\normalsize\usebeamerfont{subsection in toc}\rightskip=3em
+  \usebeamerfont{subsubsection in toc}\inserttocsubsubsection\par}
+% -----
+% END TOC fix
+% -----
+\makeatother
+
+\raggedleft % right aligns for Persian texts

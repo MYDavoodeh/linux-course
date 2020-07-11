@@ -2,45 +2,7 @@
 % Add references to notes
 \makeatletter\defbeameroption{show only notes}[]{\beamer@notestrue\beamer@notesnormalsfalse}
 
-% -----
-% BEGIN Theme
-% -----
-% Originally from https://kbroman.org/blog/2013/10/07/better-looking-latexbeamer-slides/
-\usetheme{default}
-\hypersetup{pdfpagemode=UseNone} % hides bookmarks on initial view
-\beamertemplatenavigationsymbolsempty % removes navigation buttons clashing with the defined slide numbers
-
-\setbeamertemplate{sections/subsections in toc}[sections numbered] % replaces bullets in toc with numbers
-\setbeamertemplate{bibliography item}{\insertbiblabel} % Numbered bibliography
-\setbeamertemplate{itemize subitem}{{\textendash}} % changes bullets to \textendash
-% Make bullets/nums smaller
-\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
-\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
-% Slide number
- \setbeamertemplate{footline}{%
-   \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
-         \scriptsize\insertframenumber}}}\hspace*{5pt}}
-
-\definecolor{foreground}{RGB}{255,255,255}
-\definecolor{background}{RGB}{24,24,24}
-\definecolor{title}{RGB}{107,174,214}
-\definecolor{gray}{RGB}{155,155,155}
-\definecolor{subtitle}{RGB}{102,255,204}
-\definecolor{hilight}{RGB}{102,255,204}
-\definecolor{vhilight}{RGB}{255,111,207}
-
-\setbeamercolor{titlelike}{fg=title}
-\setbeamercolor{subtitle}{fg=subtitle}
-\setbeamercolor{institute}{fg=gray}
-\setbeamercolor{normal text}{fg=foreground,bg=background}
-\setbeamercolor{item}{fg=foreground} % color of bullets
-\setbeamercolor{subitem}{fg=gray}
-\setbeamercolor{itemize/enumerate subbody}{fg=gray}
-\setbeamercolor{section in toc}{fg=foreground}
-\setbeamercolor{subsection in toc}{fg=gray}
-% -----
-% END Theme
-% -----
+\input{header_theme}
 
 \usepackage{amsmath} % for more symbols and mafs
 \usepackage{hyperref} % for links
@@ -64,107 +26,11 @@
 \setlatintextfont{Vazir}
 \setdigitfont{XB Roya}
 \setmonofont{Iosevka}
+\input{header_rtl}
 
 \author{محمدیاسین داوده}
 \title{لینوکس}
 \subtitle{هرآنچه لازم است بدانید}
 \date{\today}
 
-% -----
-% BEGIN Helpers
-% -----
-\newcommand{\start}[1][نقشه راه]{
-  \frame{\maketitle}
-  \begin{frame}{#1}\tableofcontents\end{frame}
-}
-
-\newcommand{\bib}{
-  \begin{LTR}
-    \printbibliography[heading=none]
-  \end{LTR}
-}
-
-\newcommand{\refs}{
-  \section{مراجع}
-  \begin{frame}{مراجع}
-    \bib
-  \end{frame}
-  \note{\bib}
-}
-
-\newcommand{\subt}[1]{{\footnotesize\color{subtitle}{#1}}}
-
-\newcommand{\divider}[1]{\frame{\Huge{#1}}}
-
-\newcommand{\subdivider}[1]{\frame{\color{hilight}\huge{#1}}}
-% -----
-% END Helpers
-% -----
-
-% -----
-% BEGIN RTL fixes
-% -----
-\usefonttheme{serif} % (Required for Persian)
-
-\makeatletter
-% Originally from http://qa.parsilatex.com/14100
-% -----
-% BEGIN List fix
-% -----
-\expandafter\let\csname beamer@@tmpop@itemize item@default\endcsname\relax
-\expandafter\let\csname beamer@@tmpop@itemize subitem@default\endcsname\relax
-\expandafter\let\csname beamer@@tmpop@itemize subsubitem@default\endcsname\relax
-
-\defbeamertemplate*{itemize item}{default}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleleft$}}
-\defbeamertemplate*{itemize subitem}{default}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleleft$}}
-\defbeamertemplate*{itemize subsubitem}{default}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleleft$}}
-
-\patchcmd{\@listi}{\leftmargin}{\rightmargin}{}{}
-\let\@listI\@listi
-\patchcmd{\@listii}{\leftmargin}{\rightmargin}{}{}
-\patchcmd{\@listiii}{\leftmargin}{\rightmargin}{}{}
-\patchcmd{\beamer@enum@}{\raggedright}{\raggedleft}{}{}
-\patchcmd{\@@description}{\raggedright}{\raggedleft}{}{}
-\patchcmd{\@@description}{\leftmargin}{\rightmargin}{}{}
-
-\renewcommand{\itemize}[1][]{
-  \beamer@ifempty{#1}{}{\def\beamer@defaultospec{#1}}
-  \ifnum \@itemdepth >2\relax\@toodeep\else
-    \advance\@itemdepth\@ne
-    \beamer@computepref\@itemdepth% sets \beameritemnestingprefix
-    \usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
-    \usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
-    \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
-    \list{\usebeamertemplate{itemize \beameritemnestingprefix item}}{\def\makelabel##1{{
-      \hss\llap{{
-        \usebeamerfont*{itemize \beameritemnestingprefix item}
-        \usebeamercolor[fg]{itemize \beameritemnestingprefix item}##1}}
-      }}
-    }
-  \fi
-  \beamer@cramped
-  \raggedleft
-  \beamer@firstlineitemizeunskip
-}
-% -----
-% END List fix
-% -----
-% BEGIN TOC fix
-% -----
-\expandafter\let\csname beamer@@tmpop@subsection in toc@default\endcsname\relax
-\expandafter\let\csname beamer@@tmpop@subsubsection in toc@default\endcsname\relax
-\defbeamertemplate*{subsection in toc}{default}
-{\leavevmode\rightskip=1.5em\inserttocsubsection\par}
-
-\defbeamertemplate*{subsubsection in toc}{default}
-{\leavevmode\normalsize\usebeamerfont{subsection in toc}\rightskip=3em
-  \usebeamerfont{subsubsection in toc}\inserttocsubsubsection\par}
-% -----
-% END TOC fix
-% -----
-\makeatother
-
-\raggedleft % right aligns for Persian texts
-% -----
-% END RTL fixes
-% -----
+\input{header_helpers}

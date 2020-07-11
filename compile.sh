@@ -48,7 +48,7 @@ compileto(){ # $1: Destination folder for pdf; $2(opt): file; $3(opt): withBiber
     pattern="$2.tex"
     find .\
         -name "$pattern"\
-        ! -name 'header.tex'\
+        ! -name 'header*.tex'\
         -print | while IFS= read -r file; do
             compile "$file"
             [ "$3" = "withBiber" ] && {
