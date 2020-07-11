@@ -46,7 +46,8 @@ cleanup(){ # Remove auto-generated files
 
 compile(){ xelatex -shell-escape "$1" >> $log ;}
 
-compileto(){ # $1: Destination folder for pdf; $2(opt): file; $3(opt): withBiber?;
+compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if present it will be set as a beamer show option
+    [ -n "$4" ] && sed -i "${notesln}i\\\\\\setbeameroption{show $4}" "$header" # makes Beamer to export "only notes"
     find .\
         -name "$2.tex"\
         ! -name 'header*.tex'\
@@ -59,18 +60,12 @@ compileto(){ # $1: Destination folder for pdf; $2(opt): file; $3(opt): withBiber
             compile "$file"
             echo "compiled $file"
         done
-
     # Move PDFs to the target folder
     mkdir "../$1" >/dev/null 2>&1
     # shellcheck disable=SC2035
     mv -v *.pdf "../$1"
     echo "moved pdfs to $1"
-}
-
-compilenotes(){ # BEAMER ONLY: Prepare to only compile notes
-    sed -i "${notesln}i\\\\\\setbeameroption{show $4}" "$header" # makes Beamer to export "only notes"
-    compileto "$1" "$2" "$3"
-    sed -i "${notesln}d" "$header" # removes "only notes" marker from slides headers
+    [ -n "$4" ] && sed -i "${notesln}d" "$header" # removes "only notes" marker from slides headers
 }
 
 
@@ -108,10 +103,10 @@ cd "$slidesd" || exit 1
 rm $log
 [ "$dont" = "true" ] || compileto "$destd/" "$filepattern" "$biber"
 [ "$notes" = "notes on second screen" ] && notesd="$destd"
-[ -n "$notes" ] && compilenotes "$notesd/" "$filepattern" "$biber" "$notes"
 [ "$ref" = "withNotes" ] && { # Include note references in the final build
+[ -n "$notes" ] && compileto "$notesd/" "$filepattern" "$biber" "$notes"
     # Compile and notes and save the bib file then use it to compile the main file
-    { [ -n "$notes" ] && [ "$biber" = "withBiber" ] ;} || compilenotes "trash/" "$filepattern" "withBiber" "only notes"
+    { [ -n "$notes" ] && [ "$biber" = "withBiber" ] ;} || compileto "trash/" "$filepattern" "withBiber" "only notes"
     echo "made temporary note references files"
     echo "compiling with new .bbl files"
     compileto "$destd/" "$filepattern" "withoutBiber"
