@@ -17,8 +17,7 @@ debug="withoutDebug"
 biber="withBiber"
 # notes="only notes"
 keep="keepAuxFiles"
-ref="withNotes"
-dont="false"
+dont="false" && ref="withoutNotes"
 filepattern="*"
 
 
@@ -70,7 +69,7 @@ compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if 
 
 
 # Inputs and flag management
-[ -n "$1" ] && { echo "$1" | grep -q "^-" || { input=$1 && shift ;} ;} #If the first input wasn't a flag read it as the $file pattern
+[ -n "$1" ] && { printf "%s" "$1" | grep -q "^-" || { filepattern="$1" && shift ;} ;} #If the first input wasn't a flag read it as the $file pattern
 while true; do
     case "$1" in
         -i | --input) checkin "$2" "$1" && filepattern="$(removeext "$2")" && shift 2 ;;
