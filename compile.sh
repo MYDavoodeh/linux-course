@@ -111,7 +111,7 @@ rm $log
 [ -n "$notes" ] && compilenotes "$notesd/" "$filepattern" "$biber" "$notes"
 [ "$ref" = "withNotes" ] && { # Include note references in the final build
     # Compile and notes and save the bib file then use it to compile the main file
-    compilenotes "trash/" "$filepattern" "withBiber" "only notes"
+    { [ -n "$notes" ] && [ "$biber" = "withBiber" ] ;} || compilenotes "trash/" "$filepattern" "withBiber" "only notes"
     echo "made temporary note references files"
     echo "compiling with new .bbl files"
     compileto "$destd/" "$filepattern" "withoutBiber"
