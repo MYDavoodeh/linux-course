@@ -15,8 +15,9 @@ slidesd="src"
 notesd="$destd/notes"
 debug="withoutDebug"
 biber="withoutBiber"
-notes="withoutNotes"
+# notes="only notes"
 keep="keepAuxFiles"
+dont="false"
 filepattern="*"
 
 
@@ -66,7 +67,7 @@ compileto(){ # $1: Destination folder for pdf; $2(opt): file; $3(opt): withBiber
 }
 
 compilenotes(){ # BEAMER ONLY: Prepare to only compile notes
-    sed -i "${notesln}i\\\\\\setbeameroption{show only notes}" "$header" # makes Beamer to export "only notes"
+    sed -i "${notesln}i\\\\\\setbeameroption{show $4}" "$header" # makes Beamer to export "only notes"
     compileto "$1" "$2" "$3"
     sed -i "${notesln}d" "$header" # removes "only notes" marker from slides headers
 }
@@ -79,8 +80,9 @@ while true; do
         -f | --file | -i | --input) checkin "$2" "$1" && filepattern="$(removeext "$2")" && shift 2 ;;
         -d | --debug) debug="withDebug" && shift ;;
         -b | --biber) biber="withBiber" && shift ;;
-        -n | --notes) notes="withNotes" && shift ;;
-        -o | --only-notes) notes="onlyNotes" && shift ;;
+        -n | --notes) notes="only notes" && shift ;;
+        -w | --second-screen) notes="notes on second screen" && dont="true" && shift ;;
+        -o | --only-notes) notes="only notes" && dont="true" && shift ;;
         -c | --destination-dir) checkin "$2" "$1" && destd="$2" && shift 2 ;;
         -s | --slides-dir) checkin "$2" "$1" && slidesd="$2" && shift 2 ;;
         -y | --notesd-dir) checkin "$2" "$1" && notesd="$2" && shift 2 ;;
@@ -101,8 +103,9 @@ done
 [ -n "$purged" ] && cd "$purged" && cleanup && exit 0
 cd "$slidesd" || exit 1
 rm $log
-[ "$notes" = "onlyNotes" ] || compileto "$destd/" "$filepattern" "$biber"
-[ "$notes" != "withoutNotes" ] && compilenotes "$notesd/" "$filepattern" "$biber"
+[ "$dont" = "true" ] || compileto "$destd/" "$filepattern" "$biber"
+[ "$notes" = "notes on second screen" ] && notesd="$destd"
+[ -n "$notes" ] && compilenotes "$notesd/" "$filepattern" "$biber" "$notes"
 [ "$debug" = "withDebug" ] && cat $log
 [ "$keep" != "keepAuxFiles" ] && cleanup
 exit 0
