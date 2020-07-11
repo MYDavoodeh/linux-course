@@ -8,7 +8,7 @@
 header="header.tex"
 log="compile.log"
 helpmsg="" # TODO Write a help message
-notesln="4"
+notesln="6"
 # Default values
 destd="build"
 slidesd="src"
@@ -45,9 +45,8 @@ cleanup(){ # Remove auto-generated files
 compile(){ xelatex -shell-escape "$1" >> $log ;}
 
 compileto(){ # $1: Destination folder for pdf; $2(opt): file; $3(opt): withBiber?;
-    pattern="$2.tex"
     find .\
-        -name "$pattern"\
+        -name "$2.tex"\
         ! -name 'header*.tex'\
         -print | while IFS= read -r file; do
             compile "$file"
@@ -88,7 +87,7 @@ while true; do
         -k | --keep) keep="keepAuxFiles" && shift ;;
         -r | --clean) keep="removeAuxFiles" && shift ;;
         -q | --quite) debug="withoutDebug" && shift ;;
-        -p | --purge) purge="purgeHere" && shift ;;
+        -p | --purge) purged="${2:-.}" && shift ;;
         -h | --help) echo "$helpmsg" && exit 0 ;;
         -*) echo "Invalid option: $1" && echo "$helpmsg" && exit 1 ;;
         *)  break ;; # No more options
@@ -99,7 +98,7 @@ done
 # -----
 
 
-[ "$purge" = "purgeHere" ] && cleanup && exit 0
+[ -n "$purged" ] && cd "$purged" && cleanup && exit 0
 cd "$slidesd" || exit 1
 rm $log
 [ "$notes" = "onlyNotes" ] || compileto "$destd/" "$filepattern" "$biber"
