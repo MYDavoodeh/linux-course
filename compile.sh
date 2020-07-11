@@ -17,6 +17,7 @@ debug="withoutDebug"
 biber="withoutBiber"
 # notes="only notes"
 keep="keepAuxFiles"
+ref="withNotes"
 dont="false"
 filepattern="*"
 
@@ -77,7 +78,8 @@ compilenotes(){ # BEAMER ONLY: Prepare to only compile notes
 [ -n "$1" ] && { echo "$1" | grep -q "^-" || { input=$1 && shift ;} ;} #If the first input wasn't a flag read it as the $file pattern
 while true; do
     case "$1" in
-        -f | --file | -i | --input) checkin "$2" "$1" && filepattern="$(removeext "$2")" && shift 2 ;;
+        -i | --input) checkin "$2" "$1" && filepattern="$(removeext "$2")" && shift 2 ;;
+        -f | --full-references) ref="withNotes" && dont="true" && shift ;;
         -d | --debug) debug="withDebug" && shift ;;
         -b | --biber) biber="withBiber" && shift ;;
         -n | --notes) notes="only notes" && shift ;;
@@ -106,6 +108,15 @@ rm $log
 [ "$dont" = "true" ] || compileto "$destd/" "$filepattern" "$biber"
 [ "$notes" = "notes on second screen" ] && notesd="$destd"
 [ -n "$notes" ] && compilenotes "$notesd/" "$filepattern" "$biber" "$notes"
+[ "$ref" = "withNotes" ] && { # Include note references in the final build
+    # Compile and notes and save the bib file then use it to compile the main file
+    compilenotes "trash/" "$filepattern" "withBiber" "only notes"
+    echo "made temporary note references files"
+    echo "compiling with new .bbl files"
+    compileto "$destd/" "$filepattern" "withoutBiber"
+    rm -rd ../trash && echo "removed directory 'trash'"
+    keep="removeAuxFiles"
+}
 [ "$debug" = "withDebug" ] && cat $log
 [ "$keep" != "keepAuxFiles" ] && cleanup
 exit 0
