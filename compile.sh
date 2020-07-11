@@ -60,7 +60,7 @@ compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if 
             echo "compiled $file"
         done
     # Move PDFs to the target folder
-    mkdir "../$1" >/dev/null 2>&1
+    mkdir "../$1" -p >/dev/null 2>&1
     # shellcheck disable=SC2035
     mv -v *.pdf "../$1"
     echo "moved pdfs to $1"
