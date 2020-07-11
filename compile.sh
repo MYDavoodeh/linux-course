@@ -24,7 +24,7 @@ filepattern="*"
 
 checkin(){ # Checks paramater and respond. $2 is the flag and $1 is value.
     # shellcheck disable=SC2015
-    [ -n "$1" ] && return 0 || { [ -n "$2" ] && error "No parameter for $2" || error "Bad inputs! Seek help." ;}
+    [ -n "$1" ] && return 0 || { [ -n "$2" ] && echo "No parameter for $2" || echo "Bad inputs! Seek help." ;}
 }
 
 removeext(){ echo "$1" | sed 's/\.tex$//' ;}
