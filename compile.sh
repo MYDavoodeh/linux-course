@@ -30,15 +30,11 @@ removeext(){ echo "$1" | sed 's/\.tex$//' ;}
 
 cleanup(){ # Remove auto-generated files
     find . -maxdepth 1 -type f\
-        ! -name '*.tex'\
+        ! -name '*.tex' ! -name '*.bib'\
+        ! -name '*.md' ! -name '*.org'\
+        ! -name '*.png' ! -name '*.jpg' ! -name '*.jpeg'\
         ! -name '*.sh'\
-        ! -name '*.bib'\
-        ! -name '*.org'\
-        ! -name '*.md'\
-        ! -name '.gitignore'\
-        ! -name '.editorconfig'\
-        ! -name 'README'\
-        ! -name 'LICENSE'\
+        ! -name '.gitignore' ! -name '.editorconfig' ! -name 'README' ! -name 'LICENSE'\
         -exec rm -f {} +
     echo "removed auxilary files"
 }
