@@ -7,7 +7,7 @@ Above all, this repository is a playground for me to test out LaTeX and Beamer f
 
 I welcome contributions of any sort!
 
-Compilation requires BibLatex, Biber, [[http://wiki.irmug.com/index.php?title=X_Series_2][XB Roya Font]] and [[https://github.com/be5invis/Iosevka][Iosevka]].
+Compilation requires BibLatex, Biber, [[https://pygments.org/][Pygments]], [[http://wiki.irmug.com/index.php?title=X_Series_2][XB Roya Font]] and [[https://github.com/be5invis/Iosevka][Iosevka]].
 
 * Compilation
 

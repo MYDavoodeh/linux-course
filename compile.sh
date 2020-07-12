@@ -29,6 +29,7 @@ checkin(){ # Checks paramater and respond. $2 is the flag and $1 is value.
 removeext(){ echo "$1" | sed 's/\.tex$//' ;}
 
 cleanup(){ # Remove auto-generated files
+    rm -rdf _minted*
     find . -maxdepth 1 -type f\
         ! -name '*.tex' ! -name '*.bib'\
         ! -name '*.md' ! -name '*.org'\

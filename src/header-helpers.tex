@@ -22,3 +22,22 @@
 \newcommand{\divider}[1]{\frame{\Huge{#1}}}
 
 \newcommand{\subdivider}[1]{\frame{\color{hilight}\huge{#1}}}
+
+% -----
+% BEGIN Code (minted)
+% -----
+\newenvironment*{code*}[2][]{
+  \VerbatimEnvironment
+  \begin{LTR}
+    \begin{minted}[#1, linenos, mathescape]{#2}%
+    }{
+    \end{minted}
+  \end{LTR}
+}
+
+\newcommand{\codecaption}[1][]{\captionsetup{type=listings}\captionof{listing}{#1}}
+
+\AtBeginEnvironment{minted}{\renewcommand{\fcolorbox}[4][]{#4}} % Disable syntax error red boxes
+% -----
+% END Code (minted)
+% -----
