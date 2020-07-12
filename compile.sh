@@ -45,7 +45,7 @@ compile(){ xelatex -shell-escape "$1" >> $log ;}
 compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if present it will be set as a beamer show option
     [ -n "$4" ] && sed -i "${notesln}i\\\\\\setbeameroption{show $4}" "$header" # makes Beamer to export "only notes"
     find .\
-        -name "$2.tex"\
+        -name "$2*.tex"\
         ! -name 'header*.tex'\
         -print | while IFS= read -r file; do
             compile "$file"
