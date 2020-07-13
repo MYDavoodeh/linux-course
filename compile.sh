@@ -29,16 +29,13 @@ checkin(){ # Checks paramater and respond. $2 is the flag and $1 is value.
 removeext(){ echo "$1" | sed 's/\.tex$//' ;}
 
 cleanup(){ # Remove auto-generated files
+    rm -rdf _minted*
     find . -maxdepth 1 -type f\
-        ! -name '*.tex'\
+        ! -name '*.tex' ! -name '*.bib'\
+        ! -name '*.md' ! -name '*.org'\
+        ! -name '*.png' ! -name '*.jpg' ! -name '*.jpeg'\
         ! -name '*.sh'\
-        ! -name '*.bib'\
-        ! -name '*.org'\
-        ! -name '*.md'\
-        ! -name '.gitignore'\
-        ! -name '.editorconfig'\
-        ! -name 'README'\
-        ! -name 'LICENSE'\
+        ! -name '.gitignore' ! -name '.editorconfig' ! -name 'README' ! -name 'LICENSE'\
         -exec rm -f {} +
     echo "removed auxilary files"
 }
@@ -48,7 +45,7 @@ compile(){ xelatex -shell-escape "$1" >> $log ;}
 compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if present it will be set as a beamer show option
     [ -n "$4" ] && sed -i "${notesln}i\\\\\\setbeameroption{show $4}" "$header" # makes Beamer to export "only notes"
     find .\
-        -name "$2.tex"\
+        -name "$2*.tex"\
         ! -name 'header*.tex'\
         -print | while IFS= read -r file; do
             compile "$file"

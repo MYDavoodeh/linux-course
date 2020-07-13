@@ -5,6 +5,9 @@
 
 \input{header-theme}
 
+\usepackage{ragged2e}
+\apptocmd{\frame}{}{\justifying}{}
+
 \usepackage{amsmath} % for more symbols and mafs
 \usepackage{hyperref} % for links
 \usepackage{fancyvrb}
@@ -21,6 +24,8 @@
 
 \usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{../bib.bib}
+
+\usepackage[newfloat]{minted} % for codes, newfloat allows caption modifications
 
 \usepackage{xepersian} % must be the last package
 \settextfont{XB Roya}

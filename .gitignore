@@ -17,5 +17,6 @@
 *.blg
 *.run.xml
 
-# Emacs
+# Others
+**/_minted*/*
 **/.auctex-auto/*
