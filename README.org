@@ -27,6 +27,7 @@ If you cannot meet the requirements or have problems of any sort with compilatio
 
 * Keeping it consistent
 
+- Paths and file names must use =mono= font.
 - Everything other than the slides context must be in English. (Eventually, I will translate the slides.)
 - All the generic files are Org files.
 - Common properties and commands must be written in =src/header.tex=. (no other shared file with the current =compiler.sh=. If you aim to add more, modify the file as well.)

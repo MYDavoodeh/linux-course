@@ -23,10 +23,23 @@
 
 \newcommand{\subdivider}[1]{\frame{\color{hilight}\huge{#1}}}
 
+\newcommand{\alongside}{\and\\\small\smallskip}
+
+\newcommand{\singleton}[2][]{
+  \begin{frame}{#1}
+    \centering
+    #2
+  \end{frame}
+}
+
+\newcommand{\includetwins}[3][\textwidth]{
+  \includegraphics[width=.49#1]{#2}
+  \includegraphics[width=.49#1]{#3}
+}
 % -----
 % BEGIN Code (minted)
 % -----
-\newenvironment*{code*}[2][]{
+\newenvironment{code*}[2][]{
   \VerbatimEnvironment
   \begin{LTR}
     \begin{minted}[#1, linenos, mathescape]{#2}%
