@@ -1,6 +1,16 @@
 #!/bin/sh
 # TODO write a proper description
 
+# Dependency check
+printf "\
+    xelatex
+    biber
+    find
+" | {
+    while read -r cmd ;do command -v "$cmd" >/dev/null || { echo "$cmd is required!" && depneeded="depRequired" ;} ;done
+    [ -n "$depneeded" ] && exit 1 || exit 0
+} || exit 1
+
 # -----
 # BEGIN Header code
 # -----

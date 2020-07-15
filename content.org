@@ -5,7 +5,6 @@
   - [[#free-as-in-freedom][Free, as in Freedom]]
   - [[#linux][Linux]]
 - [[#installation][Installation]]
-  - [[#which-packages-do-i-need][Which packages do I need?]]
   - [[#debian][Debian]]
 - [[#first-steps][First steps]]
   - [[#a-normal-day-with-libreoffice-and-gimp-in-plasma-live-de][A normal day with Libreoffice and GIMP in Plasma Live DE]]
@@ -14,6 +13,9 @@
   - [[#local-user-management][Local user management]]
   - [[#files][Files]]
   - [[#managing-streams-and-files][Managing streams and files]]
+- [[#packages][Packages]]
+  - [[#essential][Essential]]
+  - [[#optional][Optional]]
 - [[#more][More]]
   - [[#gnulinux-tool][GNU/Linux tool]]
   - [[#desktop-environments--windows-managers][Desktop environments & Windows managers]]
@@ -71,40 +73,6 @@
 ***** SteamOS
 *** Distributions: What's the difference?
 * Installation
-** Which packages do I need?
-*** Essential
-**** Main utils
-**** Kernel
-*** Optional
-**** Dev utils
-**** GUI and Applications
-***** Graphics Server
-****** X
-****** Wayland
-***** Desktops
-****** Desktop Environments
-******* Plasma
-******* Gnome
-******* DE Main components
-******** Window Managers
-********* Tiling
-********** i3
-********* Stacking
-******** Compositor
-******** Notification server
-******** Bars
-******** Widgets, desktop and wallpaper
-******** Font manager
-******** Default applications and configs
-********* Terminal emulator
-********* Video player
-********* Office suit
-********* PDF Reader
-********* File manager
-********* Editor
-********* Image manipulation
-********* Settings
-********* Simile.
 ** Debian
 *** Download
 *** GUI installer
@@ -169,6 +137,40 @@
 *** ~bash~
 *** ~tail~, ~head~, ~cat~, ~tac~, ~more~ & ~less~, string
 *** Best practices
+* Packages
+** Essential
+*** Main utils
+*** Kernel
+** Optional
+*** Dev utils
+*** GUI and Applications
+**** Graphics Server
+***** X
+***** Wayland
+**** Desktops
+***** Desktop Environments
+****** Plasma
+****** Gnome
+****** DE Main components
+******* Window Managers
+******** Tiling
+********* i3
+******** Stacking
+******* Compositor
+******* Notification server
+******* Bars
+******* Widgets, desktop and wallpaper
+******* Font manager
+******* Default applications and configs
+******** Terminal emulator
+******** Video player
+******** Office suit
+******** PDF Reader
+******** File manager
+******** Editor
+******** Image manipulation
+******** Settings
+******** Simile.
 * More
 ** GNU/Linux tool
 *** Examples: ~tar~, ~gcc~, ~emacs~
