@@ -36,6 +36,13 @@
   \includegraphics[width=.49#1]{#2}
   \includegraphics[width=.49#1]{#3}
 }
+
+\newcommand{\pic}[3][.8]{
+  \begin{figure}
+    \includegraphics[width=#1\textwidth]{#2}
+    \caption*{#3}
+  \end{figure}
+}
 % -----
 % BEGIN Code (minted)
 % -----
