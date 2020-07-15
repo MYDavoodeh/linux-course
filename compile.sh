@@ -74,9 +74,10 @@ compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if 
     [ -n "$4" ] && sed -i "${notesln}d" "$header" # removes "only notes" marker from slides headers
 }
 
-mvpdf(){ # $1: destination (without backslash); $2(opt): source dir
-    for file in ${2:-build}/*.pdf ;do
-        mv -v "$file" "$1/$(basename -- "$file" | sed 's/\.pdf$//')_$(basename -- "$1").pdf"
+mvpdf(){ # $1: label; $2(opt): destination; $3(opt): source;
+    mkdir -p "${2:-build}" >/dev/null 2>&1
+    for file in ${3:-build}/*.pdf ;do
+        mv -v "$file" "${2:-build}/$(basename -- "$file" | sed 's/\.pdf$//')_$1.pdf"
     done
 }
 
@@ -84,18 +85,14 @@ publish(){
     mkdir -v build
     dir="build/full$(git rev-parse --short=7 HEAD 2>&1 | grep -Pq '^([a-f]|\d){7}$' && echo "-$(git rev-parse --short=7 HEAD)")"
     rm -rdfv $dir
-    mkdir -v $dir/
-    mkdir -v $dir/full-references
-    mkdir -v $dir/notes
-    mkdir -v $dir/original-references
-    mkdir -v $dir/second-screen
     "$(basename -- "$0")" --notes --biber --full-references >/dev/null 2>&1
-    mvpdf $dir/full-references
-    mvpdf $dir/notes build/notes
+    mvpdf full-references $dir
+    mvpdf notes $dir build/notes
+    rm -d build/notes >/dev/null 2>&1
     "$(basename -- "$0")" --biber --original-refs >/dev/null 2>&1
-    mvpdf $dir/original-references
+    mvpdf original-references $dir
     "$(basename -- "$0")" --biber --full-references --second-screen >/dev/null 2>&1
-    mvpdf $dir/second-screen
+    mvpdf second-screen $dir
     echo "published in $dir"
 }
 
