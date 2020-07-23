@@ -15,9 +15,23 @@ After meeting the requirements, you can run the =compile.sh= to get your outputs
   #+BEGIN_SRC
 ./compile.sh --publish
   #+END_SRC
-or compile without the script and changing the source code manually.
+or compile without the script and change the source code manually.
 
 If you cannot meet the requirements or have problems of any sort with compilation process, please refer to [[https://github.com/MYDavoodeh/linux-course/releases][Releases]] and find a pre-compiled PDF suiting your needs.
+
+** Different versions
+
+*** Notes
+The presenter notes. Comes with its own reference table (which often is often broken, use the Full References versions instead).
+
+*** Original References
+These versions are the "normal" slides. The references mentioned in notes are not included in the references tab.
+
+*** Full References
+Full References version includes all references (including the one mentioned in notes only).
+
+*** Second Screen
+The Second Screen version has both notes and a Full References version of the slides side by side in a single slide.
 
 * Todo list
 
