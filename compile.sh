@@ -40,13 +40,9 @@ removeext(){ echo "$1" | sed 's/\.tex$//' ;}
 
 cleanup(){ # Remove auto-generated files
     rm -rdf _minted*
-    find . -maxdepth 1 -type f\
-        ! -name '*.tex' ! -name '*.bib'\
-        ! -name '*.md' ! -name '*.org'\
-        ! -name '*.png' ! -name '*.jpg' ! -name '*.jpeg'\
-        ! -name '*.sh'\
-        ! -name '.gitignore' ! -name '.editorconfig' ! -name 'README' ! -name 'LICENSE'\
-        -exec rm -f {} +
+    find . -maxdepth 1 -type f -regextype gnu-awk\
+        -regex "^.*\\.(4tc|xref|tmp|pyc|pyo|fls|vrb|fdb_latexmk|bak|swp|aux|log|synctex\\(busy\\)|lof|lot|maf|idx|mtc|mtc0|nav|out|snm|toc|bcf|run\\.xml|synctex\\.gz|blg|bbl)"\
+        -delete
     echo "removed auxilary files"
 }
 
