@@ -6,8 +6,9 @@ printf "\
     xelatex
     biber
     find
+    pygmentize
 " | {
-    while read -r cmd ;do command -v "$cmd" >/dev/null || { echo "$cmd is required!" && depneeded="depRequired" ;} ;done
+    while read -r cmd; do command -v "$cmd" >/dev/null || { echo "$cmd is required!" && depneeded="depRequired"; }; done
     [ -n "$depneeded" ] && exit 1 || exit 0
 } || exit 1
 
@@ -26,42 +27,37 @@ notesd="$destd/notes"
 debug="withoutDebug"
 biber="withBiber"
 # notes="only notes"
-keep="keepAuxFiles"
+keep="removeAuxFiles"
 dont="false" && ref="withoutNotes"
 filepattern="*"
 
-
-checkin(){ # Checks paramater and respond. $2 is the flag and $1 is value.
+checkin() { # Checks paramater and respond. $2 is the flag and $1 is value.
     # shellcheck disable=SC2015
-    [ -n "$1" ] && return 0 || { [ -n "$2" ] && echo "No parameter for $2" || echo "Bad inputs! Seek help." ;}
+    [ -n "$1" ] && return 0 || { [ -n "$2" ] && echo "No parameter for $2" || echo "Bad inputs! Seek help."; }
 }
 
-removeext(){ echo "$1" | sed 's/\.tex$//' ;}
-
-cleanup(){ # Remove auto-generated files
+cleanup() { # Remove auto-generated files
     rm -rdf _minted*
-    find . -maxdepth 1 -type f -regextype gnu-awk\
-        -regex "^.*\\.(4tc|xref|tmp|pyc|pyo|fls|vrb|fdb_latexmk|bak|swp|aux|log|synctex\\(busy\\)|lof|lot|maf|idx|mtc|mtc0|nav|out|snm|toc|bcf|run\\.xml|synctex\\.gz|blg|bbl)"\
+    find . -maxdepth 1 -type f -regextype gnu-awk -regex "^.*\\.(4tc|xref|tmp|pyc|pyo|fls|vrb|fdb_latexmk|bak|swp|aux|log|synctex\\(busy\\)|lof|lot|maf|idx|mtc|mtc0|nav|out|snm|toc|bcf|run\\.xml|synctex\\.gz|blg|bbl)" \
         -delete
     echo "removed auxilary files"
 }
 
-compile(){ xelatex -shell-escape "$1" >> $log ;}
+compile() { xelatex -shell-escape "$1" >>$log; }
 
-compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if present it will be set as a beamer show option
+compileto() { # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if present it will be set as a beamer show option
     [ -n "$4" ] && sed -i "${notesln}i\\\\\\setbeameroption{show $4}" "$header" # makes Beamer to export "only notes"
-    find .\
-        -name "$2*.tex"\
-        ! -name 'header*.tex'\
+    find . -name "$2*.tex" \
+        ! -name 'header*.tex' \
         -print | while IFS= read -r file; do
-            compile "$file"
-            [ "$3" = "withBiber" ] && {
-                biber "$(removeext "$file")" >> $log
-                echo "bibed $file"
-            }
-            compile "$file"
-            echo "compiled $file"
-        done
+        compile "$file"
+        [ "$3" = "withBiber" ] && {
+            biber "${file%.tex}" >>$log
+            echo "bibed $file"
+        }
+        compile "$file"
+        echo "compiled $file"
+    done
     # Move PDFs to the target folder
     mkdir "../$1" -p >/dev/null 2>&1
     # shellcheck disable=SC2035
@@ -70,14 +66,14 @@ compileto(){ # $1: Destination folder for pdf; $2: file; $3: withBiber?; $4: if 
     [ -n "$4" ] && sed -i "${notesln}d" "$header" # removes "only notes" marker from slides headers
 }
 
-mvpdf(){ # $1: label; $2(opt): destination; $3(opt): source;
+mvpdf() { # $1: label; $2(opt): destination; $3(opt): source;
     mkdir -p "${2:-build}" >/dev/null 2>&1
-    for file in ${3:-build}/*.pdf ;do
+    for file in ${3:-build}/*.pdf; do
         mv -v "$file" "${2:-build}/$(basename -- "$file" | sed 's/\.pdf$//')_$1.pdf"
     done
 }
 
-publish(){
+publish() {
     mkdir -v build
     dir="build/full$(git rev-parse --short=7 HEAD 2>&1 | grep -Pq '^([a-f]|\d){7}$' && echo "-$(git rev-parse --short=7 HEAD)")"
     rm -rdfv $dir
@@ -92,12 +88,11 @@ publish(){
     echo "published in $dir"
 }
 
-
 # Inputs and flag management
-[ -n "$1" ] && { printf "%s" "$1" | grep -q "^-" || { filepattern="$1" && shift ;} ;} #If the first input wasn't a flag read it as the $file pattern
+[ -n "$1" ] && { printf "%s" "$1" | grep -q "^-" || { filepattern="$1" && shift; }; } #If the first input wasn't a flag read it as the $file pattern
 while true; do
     case "$1" in
-        -i | --input) checkin "$2" "$1" && filepattern="$(removeext "$2")" && shift 2 ;;
+        -i | --input) checkin "$2" "$1" && filepattern="${2%.tex}" && shift 2 ;;
         -f | --full-references) ref="withNotes" && dont="true" && shift ;;
         -d | --debug) debug="withDebug" && shift ;;
         -b | --biber) biber="withBiber" && shift ;;
@@ -114,15 +109,17 @@ while true; do
         -q | --quite) debug="withoutDebug" && shift ;;
         -p | --purge) purged="${2:-.}" && shift ;;
         -h | --help) echo "$helpmsg" && exit 0 ;;
-        -a | --publish) publish ; exit 0 ;;
+        -a | --publish)
+            publish
+            exit 0
+            ;;
         -*) echo "Invalid option: $1" && echo "$helpmsg" && exit 1 ;;
-        *)  break ;; # No more options
+        *) break ;; # No more options
     esac
 done
 # -----
 # END Header code
 # -----
-
 
 [ -n "$purged" ] && cd "$purged" && cleanup && exit 0
 cd "$slidesd" || exit 1
@@ -133,7 +130,7 @@ rm $log
 # When notes are on the second screen, note references are automatically included in References section
 [ "$ref" = "withNotes" ] && [ "$notes" != "notes on second screen" ] && { # Include note references in the final build
     # Compile and notes and save the bib file then use it to compile the main file
-    { [ -n "$notes" ] && [ "$biber" = "withBiber" ] ;} || compileto "trash/" "$filepattern" "withBiber" "only notes"
+    { [ -n "$notes" ] && [ "$biber" = "withBiber" ]; } || compileto "trash/" "$filepattern" "withBiber" "only notes"
     echo "made temporary note references files"
     echo "compiling with new .bbl files"
     compileto "$destd/" "$filepattern" "withoutBiber"

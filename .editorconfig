@@ -1,3 +1,14 @@
 [*.{tex,bib}]
 charset = utf-8
 indent_size = 2
+
+[*.sh]
+# For shfmt
+indent_style = space
+indent_size = 4
+shell_variant = posix
+binary_next_line = true  # like -bn
+switch_case_indent = true  # like -ci
+space_redirects = true  # like -sr
+keep_padding = false  # like -kp
+function_next_line = false  # like -fn
